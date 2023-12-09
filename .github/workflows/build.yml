@@ -25,7 +25,7 @@ jobs:
 
     - name: Build wheels
       run: |
-        python -m cibuildwheel --output-dir wheelhouse --platform windows,linux
+        python -m cibuildwheel --output-dir wheelhouse --platform windows
 
     - name: Upload wheels
       uses: actions/upload-artifact@v2
