@@ -25,10 +25,11 @@ jobs:
 
     - name: Build wheels
       run: |
-        python -m cibuildwheel --output-dir wheelhouse
+        python -m cibuildwheel --output-dir wheelhouse --platform windows,linux
 
     - name: Upload wheels
       uses: actions/upload-artifact@v2
       with:
         name: wheels
         path: wheelhouse
+
