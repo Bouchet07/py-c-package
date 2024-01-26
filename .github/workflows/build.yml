@@ -25,6 +25,10 @@ jobs:
     - name: Build wheels
       run: |
         CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel
+
+    - name: List files in directory
+      run: ls -R
+      
     
 
   publish:
@@ -46,7 +50,7 @@ jobs:
 
     - name: Publish to PyPI
       run: |
-        python -m twine upload *.whl #wheelhouse/* 
+        python -m twine upload wheelhouse/*.whl
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
