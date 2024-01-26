@@ -24,8 +24,7 @@ jobs:
         pip install cibuildwheel
     - name: Build wheels
       run: |
-        CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel #--output-dir wheelhouse
-        ls -l wheelhouse  # Print the contents of the wheelhouse directory
+        CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel
     
 
   publish:
@@ -47,7 +46,7 @@ jobs:
 
     - name: Publish to PyPI
       run: |
-        python -m twine upload wheelhouse/* 
+        python -m twine upload *.whl #wheelhouse/* 
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
