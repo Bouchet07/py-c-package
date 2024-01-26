@@ -24,7 +24,8 @@ jobs:
         pip install cibuildwheel
     - name: Build wheels
       run: |
-        CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel --output-dir wheelhouse
+        CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel #--output-dir wheelhouse
+        ls -l wheelhouse  # Print the contents of the wheelhouse directory
     
 
   publish:
