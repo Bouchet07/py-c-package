@@ -25,7 +25,7 @@ jobs:
 
     - name: Build wheels
       run: |
-        python -m cibuildwheel --output-dir wheelhouse --platform win
+        python -m cibuildwheel --output-dir wheelhouse --platform windows
     
 
   publish:
