@@ -7,7 +7,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2019, macos-11]
 
     steps:
     - name: Checkout code
@@ -24,7 +28,7 @@ jobs:
         pip install cibuildwheel
     - name: Build wheels
       run: |
-        CIBW_BUILD="cp312-manylinux_x86_64" python -m cibuildwheel
+        python -m cibuildwheel
 
     - name: List files in directory
       run: ls -R
