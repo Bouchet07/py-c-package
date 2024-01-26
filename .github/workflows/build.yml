@@ -47,7 +47,7 @@ jobs:
 
     - name: Publish to PyPI
       run: |
-        python -m twine upload wheelhouse/* --repository-url https://test.pypi.org/legacy/
+        python -m twine upload wheelhouse/* 
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
