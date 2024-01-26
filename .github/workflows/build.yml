@@ -24,7 +24,7 @@ jobs:
         pip install cibuildwheel
     - name: Build wheels
       run: |
-        CIBW_BUILD="cp312-*" python -m cibuildwheel --output-dir wheelhouse --platform windows
+        CIBW_BUILD="cp312-*" python -m cibuildwheel --output-dir wheelhouse
     
 
   publish:
