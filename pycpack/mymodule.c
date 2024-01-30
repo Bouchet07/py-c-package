@@ -1,4 +1,6 @@
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
+#include "Faddeeva/Faddeeva.h"
 
 // Define the actual function
 int add(int a, int b) {
@@ -7,6 +9,17 @@ int add(int a, int b) {
 
 double add_f(double a, double b){
     return a + b;
+}
+
+static PyObject *py_Faddeeva_erf_re(PyObject *self, PyObject *args) {
+    double x;
+    if (!PyArg_ParseTuple(args, "d", &x)) {
+        return NULL;
+    }
+
+    double result = Faddeeva_erf_re(x);
+
+    return Py_BuildValue("d", result);
 }
 
 static PyObject *py_add(PyObject *self, PyObject *args) {
@@ -29,6 +42,7 @@ static PyObject *py_add_f(PyObject *self, PyObject *args){
 static PyMethodDef methods[] = {
     {"add", py_add, METH_VARARGS, "Add two integers."},
     {"add_f", py_add_f, METH_VARARGS, "Add two floats."},
+    {"erf_re", py_Faddeeva_erf_re, METH_VARARGS, "Error funciton for real numbers."},
     {NULL, NULL, 0, NULL}  // Sentinel
 };
 

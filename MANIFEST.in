@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include pycpack *.py
+include pycpack/mymodule.c
+include pycpack/*.pyd
+include pycpack/*.so
